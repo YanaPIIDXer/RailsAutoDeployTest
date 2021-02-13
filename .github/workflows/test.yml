@@ -9,8 +9,8 @@ jobs:
     - uses: actions/checkout@v1
     - name: Setup
       run: |
-        docker-compose run -it app rake db:create
-        docker-compose run -it app rake db:migrate
+        docker-compose run app rake db:create
+        docker-compose run app rake db:migrate
     - name: Exec RSpec
       run: |
-        docker-compose run -it app bundle exec rspec
+        docker-compose run app bundle exec rspec
