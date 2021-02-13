@@ -10,8 +10,8 @@ jobs:
     - name: Setup
       run: |
         docker-compose up -d --build
-        docker-compose exec -T app rake db:create
-        docker-compose exec -T app rake db:migrate
+        docker-compose exec -it app rake db:create
+        docker-compose exec -it app rake db:migrate
     - name: Exec RSpec
       run: |
-        docker-compose exec -T app bundle exec rspec
+        docker-compose exec -it app bundle exec rspec
