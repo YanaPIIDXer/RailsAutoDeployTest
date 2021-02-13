@@ -11,7 +11,6 @@ services:
       - tmp-data:/app/tmp
       - log-data:/app/log
       - /app/node_modules
-    tty: true
     depends_on:
       - db
 
@@ -27,7 +26,6 @@ services:
         MYSQL_USER: develop
         MYSQL_PASSWORD: develop
         TZ: Asia/Tokyo
-    tty: true
 
   web:
     build:
