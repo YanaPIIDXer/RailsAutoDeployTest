@@ -1,0 +1,12 @@
+name: test
+on: push
+
+jobs:
+  test:
+    name: Test with RSpec
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.6
