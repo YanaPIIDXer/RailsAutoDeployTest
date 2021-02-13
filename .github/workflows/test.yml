@@ -7,13 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Setup Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6.6
+    - name: Setup
+      run: |
+        docker-compose build
+        docker-compose run app rake db:create
+        docker-compose run app rake db:migrate
     - name: Exec RSpec
       run: |
-        cd rails/app
-        gem install bundler
-        bundle install --path vendor/bundle --quiet --jobs 4 --retry 3
-        bundle exec rspec
+        docker-compose exec app bundle exec rspec
