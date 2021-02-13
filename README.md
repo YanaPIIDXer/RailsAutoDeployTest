@@ -2,6 +2,7 @@
 RailsアプリケーションのCI/CDパイプライン実験リポジトリ。  
 ステップ毎にブランチを切って実験を進める。  
 ※初回の動作検証を除き、CI/CDパイプラインはmainブランチへのマージをトリガーにする予定。  
+- Nginx/Puma/Rails/MySQLの構成
 - Docker使用
   - ローカル環境ではdocker-composeも
 - デプロイにCapistrano使用
