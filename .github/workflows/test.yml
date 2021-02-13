@@ -6,12 +6,14 @@ jobs:
     name: Test with RSpec
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v1
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.6
     - name: Exec RSpec
       run: |
+        ls
         cd rails/app
         gem install bundler
         bundle install --path vendor/bundle --quiet --jobs 4 --retry 3
