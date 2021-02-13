@@ -1,0 +1,2 @@
+# RailsAutoDeployTest
+RailsアプリケーションのCI/CDパイプライン実験
