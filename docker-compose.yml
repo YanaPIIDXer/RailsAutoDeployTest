@@ -25,3 +25,14 @@ services:
         MYSQL_PASSWORD: develop
         TZ: Asia/Tokyo
     tty: true
+
+  web:
+    build:
+      context: ./nginx
+    volumes:
+      - ./nginx/public:/webapp/public
+      - ./nginx/tmp:/webapp/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - app
