@@ -13,7 +13,7 @@ jobs:
       run: |
         docker-compose build
         docker-compose up -d db
-        sleep 2s
+        sleep 5s
         docker-compose run app rake db:create
       env:
         RAILS_ENV: test
