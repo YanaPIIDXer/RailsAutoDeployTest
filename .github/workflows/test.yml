@@ -12,10 +12,14 @@ jobs:
       shell: bash
       run: |
         docker-compose build
+        docker-compose up -d db
+        docker-compose ps
+        docker-compose logs db
         docker-compose run app rake db:create
         docker-compose run app rake db:migrate
       env:
         RAILS_ENV: test
     - name: Exec RSpec
+      shell: bash
       run: |
         docker-compose run app bundle exec rspec
