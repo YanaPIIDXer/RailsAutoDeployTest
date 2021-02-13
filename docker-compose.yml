@@ -7,6 +7,9 @@ services:
       - 3000:3000
     volumes:
       - ./rails/app:/app
+      - public-data:/app/public
+      - tmp-data:/app/tmp
+      - log-data:/app/log
       - /app/node_modules
     tty: true
     depends_on:
@@ -18,7 +21,7 @@ services:
     ports:
         - "3306:3306"
     volumes:
-        - ./mysql:/var/lib/mysql
+        - db-data:/var/lib/mysql
     environment:
         MYSQL_ROOT_PASSWORD: root
         MYSQL_USER: develop
@@ -30,9 +33,15 @@ services:
     build:
       context: ./nginx
     volumes:
-      - ./nginx/public:/webapp/public
-      - ./nginx/tmp:/webapp/tmp
+      - public-data:/webapp/public
+      - tmp-data:/webapp/tmp
     ports:
       - 80:80
     depends_on:
       - app
+  
+volumes:
+  public-data:
+  tmp-data:
+  log-data:
+  db-data:
