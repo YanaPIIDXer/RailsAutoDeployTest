@@ -13,6 +13,7 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # HACK:面倒なのでroot。良い子は真似しないでね
   username: root
   password: root
   host: db
