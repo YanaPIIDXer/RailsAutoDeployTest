@@ -13,7 +13,6 @@ jobs:
         ruby-version: 2.6.6
     - name: Exec RSpec
       run: |
-        ls
         cd rails/app
         gem install bundler
         bundle install --path vendor/bundle --quiet --jobs 4 --retry 3
