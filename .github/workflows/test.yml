@@ -1,0 +1,26 @@
+name: test
+on: push
+
+jobs:
+  test:
+    name: Test with RSpec
+    runs-on: ubuntu-latest
+    # 参考：https://codelabo.com/posts/20201128164634
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup
+      shell: bash
+      run: |
+        docker-compose build
+        docker-compose up -d db
+        sleep 5s
+        docker-compose run app rake db:create
+      env:
+        RAILS_ENV: test
+    - name: Exec RSpec
+      shell: bash
+      run: |
+        docker-compose run app rake db:migrate RAILS_ENV=test
+        docker-compose run app bundle exec rspec
+      env:
+        RAILS_ENV: test
