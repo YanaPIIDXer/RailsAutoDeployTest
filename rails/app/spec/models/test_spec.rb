@@ -12,10 +12,4 @@ RSpec.describe Test, type: :model do
     result = test.return_false()
     expect(result).to be_falsey
   end
-  
-  it "fail test" do
-    test = Test.new()
-    result = test.return_false()
-    expect(result).to be_truthy
-  end
 end
