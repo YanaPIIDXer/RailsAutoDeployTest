@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Test, type: :model do
+  ```
   it "return_true method returns true" do
     test = Test.new()
     result = test.return_true()
@@ -18,4 +19,5 @@ RSpec.describe Test, type: :model do
     result = test.return_false()
     expect(result).to be_truthy
   end
+  ```
 end
