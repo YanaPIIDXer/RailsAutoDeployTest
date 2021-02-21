@@ -16,6 +16,9 @@ module "VPC" {
         {
             cidr_block = "10.0.2.0/24"
             availability_zone = "ap-northeast-1c"
+        },{
+            cidr_block = "10.0.3.0/24"
+            availability_zone = "ap-northeast-1c"
         }
     ]
 }
@@ -64,7 +67,7 @@ module "RDS" {
     source = "./RDS"
     name = "deploy_test"
     identifier = "deploy-test"
-    subnets = [module.VPC.private_subnets[0].id]
+    subnets = [module.VPC.private_subnets[0].id, module.VPC.private_subnets[1].id]
     db_name = "deploy_test"
     root_data = {
         name = "root"
