@@ -31,9 +31,9 @@ module "RouteTable" {
     }]
 }
 
-module "SecurityGroup" {
+module "SecurityGroup_ECS" {
     source = "./SecurityGroup"
-    name = "deploy_test"
+    name = "deploy_test_ecs"
     vpc_id = module.VPC.vpc_id
     subnets = module.VPC.public_subnets
     gateway_routes = [{
@@ -48,5 +48,27 @@ module "EC2" {
     source = "./EC2"
     name = "deploy_test"
     subnet = module.VPC.public_subnets[0]
-    security_groups = [module.SecurityGroup.id]
+    security_groups = [module.SecurityGroup_ECS.id]
+}
+
+module "SecurityGroup_RDS" {
+    source = "./SecurityGroup"
+    name = "deploy_test_rds"
+    vpc_id = module.VPC.vpc_id
+    subnets = module.VPC.private_subnets
+    enable_ssh = true
+    enable_mysql = true
+}
+
+module "RDS" {
+    source = "./RDS"
+    name = "deploy_test"
+    identifier = "deploy-test"
+    subnets = [module.VPC.private_subnets[0].id]
+    db_name = "deploy_test"
+    root_data = {
+        name = "root"
+        password = "root"
+    }
+    security_groups = [module.SecurityGroup_RDS.id]
 }
