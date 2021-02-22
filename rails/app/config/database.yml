@@ -15,7 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   # HACK:面倒なのでroot。良い子は真似しないでね
   username: root
-  password: root
+  password: password
   host: db
 
 development:
