@@ -72,7 +72,7 @@ module "RDS" {
     db_name = "deploy_test"
     root_data = {
         name = "root"
-        password = "root"
+        password = "password"
     }
     security_groups = [module.SecurityGroup_RDS.id]
 }
