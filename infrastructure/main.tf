@@ -15,7 +15,7 @@ module "VPC" {
     private_subnets = [
         {
             cidr_block = "10.0.2.0/24"
-            availability_zone = "ap-northeast-1c"
+            availability_zone = "ap-northeast-1a"
         },{
             cidr_block = "10.0.3.0/24"
             availability_zone = "ap-northeast-1c"
