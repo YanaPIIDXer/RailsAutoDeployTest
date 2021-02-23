@@ -53,6 +53,7 @@ module "EC2" {
     name = "deploy_test"
     subnet = module.VPC.public_subnets[0]
     security_groups = [module.SecurityGroup_ECS.id]
+    key_name = "key"
 }
 
 module "SecurityGroup_RDS" {
