@@ -6,8 +6,13 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-
-
+# TODO:ElasticIPを使うようにする
+server "54.250.249.99", user: "ec2-user", roles: %w{app db}, ssh_options: {
+    keys: %w(/secret/key.pem),
+    forward_agent: false,
+    auth_methods: %w(publickey),
+    port: 22
+}
 
 # role-based syntax
 # ==================
