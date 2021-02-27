@@ -39,7 +39,6 @@ module "SecurityGroup_ECS" {
     source = "./SecurityGroup"
     name = "deploy_test_ecs"
     vpc_id = module.VPC.vpc_id
-    subnets = module.VPC.public_subnets
     gateway_routes = [{
         id = module.VPC.internet_gateway_id
         cidr_block = "0.0.0.0/0"
@@ -60,7 +59,6 @@ module "SecurityGroup_RDS" {
     source = "./SecurityGroup"
     name = "deploy_test_rds"
     vpc_id = module.VPC.vpc_id
-    subnets = module.VPC.private_subnets
     enable_ssh = true
     enable_mysql = true
 }

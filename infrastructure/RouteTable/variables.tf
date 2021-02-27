@@ -16,3 +16,8 @@ variable "gateway_routes" {
   default     = []
   description = "ゲートウェイとcidr_blockのセットの配列"
 }
+
+variable "nat_gateway_routes" {
+  default     = []
+  description = "NATゲートウェイとcidr_blockのセットの配列"
+}
